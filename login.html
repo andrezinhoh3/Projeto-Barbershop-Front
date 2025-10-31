@@ -1,0 +1,68 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Barbershop Juan</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="/img/favicon.png" type="image/png" />
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <a href="index.html" class="logo">Barbershop Juan</a>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="barbeiros.html">Barbeiros</a></li>
+          <li><a href="agendamento.html">Agendamento</a></li>
+          <li><a href="login.html" class="active">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" required minlength="8" />
+
+        <button type="submit" class="btn">Entrar</button>
+        <a href="cadastro.html">Registrar</a>
+      </form>
+    </main>
+
+    <footer>
+      <p>© 2025 Barbershop Juan - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = document.getElementById("email").value;
+          const senha = document.getElementById("senha").value;
+          try {
+            const res = await fetch("http://localhost:8080/auth/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, senha }),
+            });
+            if (!res.ok) throw new Error("Erro no login");
+            const data = await res.json();
+            localStorage.setItem("token", data.token);
+            alert("Login realizado!");
+            window.location.href = "agendamento.html";
+          } catch (err) {
+            alert(err.message);
+          }
+        });
+    </script>
+  </body>
+</html>

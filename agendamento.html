@@ -1,0 +1,69 @@
+<!-- agendamento.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agendamento - Barbershop Juan</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="/img/favicon.png" type="image/png" />
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <a href="index.html" class="logo">Barbershop Juan</a>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="barbeiros.html">Barbeiros</a></li>
+          <li><a href="agendamento.html" class="active">Agendamento</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h2>Agendar Horário</h2>
+      <form id="agendamento-form">
+        <label for="usuario">ID do Usuário:</label>
+        <input type="number" id="usuario" value="1" required />
+
+        <label for="barbeiro">Barbeiro:</label>
+        <select id="barbeiro"></select>
+
+        <label for="servico">Serviço:</label>
+        <select id="servico"></select>
+
+        <label for="dataHora">Data e Hora:</label>
+        <input type="datetime-local" id="dataHora" required />
+
+        <button type="submit" class="btn">Agendar</button>
+      </form>
+    </main>
+
+    <footer>
+      <p>© 2025 Barbershop Juan - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          alert("Você precisa estar logado para agendar.");
+          window.location.href = "login.html";
+          return;
+        }
+        await popularBarbeiros();
+        await popularServicos();
+
+        document
+          .getElementById("agendamento-form")
+          .addEventListener("submit", async (e) => {
+            e.preventDefault();
+            await criarAgendamento();
+          });
+      });
+    </script>
+  </body>
+</html>
