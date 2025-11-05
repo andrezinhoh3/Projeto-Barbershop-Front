@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -7,8 +6,13 @@
     <title>Barbershop Juan</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" href="img/favicon.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
+    <!-- MENU DINÂMICO -->
     <header class="header">
       <nav>
         <a href="index.html" class="logo">Barbershop Juan</a>
@@ -17,11 +21,12 @@
           <li><a href="servicos.html">Serviços</a></li>
           <li><a href="barbeiros.html">Barbeiros</a></li>
           <li><a href="agendamento.html">Agendamento</a></li>
-          <li><a href="login.html">Login</a></li>
+          <li><a href="login.html" id="loginBtn">Login</a></li>
         </ul>
       </nav>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
       <img src="img/barbearia.png" alt="Barbearia moderna" />
       <div class="hero-text">
@@ -29,11 +34,36 @@
         <a href="agendamento.html" class="btn">Agende seu horário</a>
       </div>
     </section>
+
+    <!-- GALERIA DE CORTES -->
+    <section class="gallery">
+      <h2>Nosso Trabalho</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="img/corte1.jpeg" alt="Corte Masculino 1" />
+          <p>Corte Clássico</p>
+        </div>
+        <div class="gallery-item">
+          <img src="img/corte2.jpeg" alt="Corte Masculino 2" />
+          <p>Corte Moderno</p>
+        </div>
+        <div class="gallery-item">
+          <img src="img/corte3.jpeg" alt="Barba" />
+          <p>Corte Mordeno com Desenho</p>
+        </div>
+        <div class="gallery-item">
+          <img src="img/corte4.jpeg" alt="Cabelo + Barba" />
+          <p>Cabelo + Barba</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCALIZAÇÃO -->
     <section class="location">
       <h2>Nossa Localização</h2>
       <p>
-        Visite-nos no endereco: R. Flor de Cerejeira, 56 - Parque João Ramalho,
-        Santo André - SP, 09273-080
+        R. Flor de Cerejeira, 56 - Parque João Ramalho, Santo André - SP,
+        09273-080
       </p>
       <p>Horário de funcionamento: Seg-Sex 9h-20h, Sáb 8h-16h</p>
       <iframe
@@ -43,13 +73,23 @@
         style="border: 0"
         allowfullscreen=""
         loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      >
-      </iframe>
+      ></iframe>
     </section>
 
     <footer>
       <p>© 2025 Barbershop Juan - Todos os direitos reservados</p>
+
+      <div class="social-footer">
+        <a
+          href="https://www.instagram.com/jr__cortes_?igsh=MXR1aHJkenk0NXlkdw=="
+          target="_blank"
+        >
+          <i class="fab fa-instagram"></i> @jr__cortes_
+        </a>
+        <a href="https://wa.me/5511977473530" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
     </footer>
 
     <script src="js/main.js"></script>

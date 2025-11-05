@@ -1,4 +1,3 @@
-<!-- agendamento.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -6,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agendamento - Barbershop Juan</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="/img/favicon.png" type="image/png" />
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
+    <!-- MENU DINÂMICO -->
     <header class="header">
       <nav>
         <a href="index.html" class="logo">Barbershop Juan</a>
@@ -17,17 +21,14 @@
           <li><a href="servicos.html">Serviços</a></li>
           <li><a href="barbeiros.html">Barbeiros</a></li>
           <li><a href="agendamento.html" class="active">Agendamento</a></li>
-          <li><a href="login.html">Login</a></li>
+          <li><a href="login.html" id="loginBtn">Login</a></li>
         </ul>
       </nav>
     </header>
 
-    <main class="container">
-      <h2>Agendar Horário</h2>
+    <main>
+      <h1>Agende seu Horário</h1>
       <form id="agendamento-form">
-        <label for="usuario">ID do Usuário:</label>
-        <input type="number" id="usuario" value="1" required />
-
         <label for="barbeiro">Barbeiro:</label>
         <select id="barbeiro"></select>
 
@@ -37,32 +38,31 @@
         <label for="dataHora">Data e Hora:</label>
         <input type="datetime-local" id="dataHora" required />
 
-        <button type="submit" class="btn">Agendar</button>
+        <button type="button" onclick="criarAgendamento()">Agendar</button>
       </form>
     </main>
 
     <footer>
       <p>© 2025 Barbershop Juan - Todos os direitos reservados</p>
+
+      <div class="social-footer">
+        <a
+          href="https://www.instagram.com/jr__cortes_?igsh=MXR1aHJkenk0NXlkdw=="
+          target="_blank"
+        >
+          <i class="fab fa-instagram"></i> @jr__cortes_
+        </a>
+        <a href="https://wa.me/5511977473530" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
     </footer>
 
     <script src="js/main.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", async () => {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          alert("Você precisa estar logado para agendar.");
-          window.location.href = "login.html";
-          return;
-        }
-        await popularBarbeiros();
-        await popularServicos();
-
-        document
-          .getElementById("agendamento-form")
-          .addEventListener("submit", async (e) => {
-            e.preventDefault();
-            await criarAgendamento();
-          });
+      document.addEventListener("DOMContentLoaded", () => {
+        popularBarbeiros();
+        popularServicos();
       });
     </script>
   </body>

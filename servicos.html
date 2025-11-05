@@ -1,4 +1,3 @@
-<!-- servicos.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -6,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Serviços - Barbershop Juan</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="/img/favicon.png" type="image/png" />
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
+    <!-- MENU DINÂMICO -->
     <header class="header">
       <nav>
         <a href="index.html" class="logo">Barbershop Juan</a>
@@ -17,25 +21,35 @@
           <li><a href="servicos.html" class="active">Serviços</a></li>
           <li><a href="barbeiros.html">Barbeiros</a></li>
           <li><a href="agendamento.html">Agendamento</a></li>
-          <li><a href="login.html">Login</a></li>
+          <li><a href="login.html" id="loginBtn">Login</a></li>
         </ul>
       </nav>
     </header>
 
-    <main class="container">
-      <h2>Serviços Disponíveis</h2>
-      <div id="servicos-lista" class="grid"></div>
+    <main>
+      <h1>Nossos Serviços</h1>
+      <div id="servicos-lista"></div>
     </main>
 
     <footer>
       <p>© 2025 Barbershop Juan - Todos os direitos reservados</p>
+
+      <div class="social-footer">
+        <a
+          href="https://www.instagram.com/jr__cortes_?igsh=MXR1aHJkenk0NXlkdw=="
+          target="_blank"
+        >
+          <i class="fab fa-instagram"></i> @jr__cortes_
+        </a>
+        <a href="https://wa.me/5511977473530" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
     </footer>
 
     <script src="js/main.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", async () => {
-        await listarServicos();
-      });
+      document.addEventListener("DOMContentLoaded", listarServicos);
     </script>
   </body>
 </html>

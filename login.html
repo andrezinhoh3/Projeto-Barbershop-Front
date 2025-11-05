@@ -1,4 +1,3 @@
-<!-- login.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -6,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - Barbershop Juan</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="/img/favicon.png" type="image/png" />
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
+    <!-- MENU DINÂMICO -->
     <header class="header">
       <nav>
         <a href="index.html" class="logo">Barbershop Juan</a>
@@ -17,52 +22,45 @@
           <li><a href="servicos.html">Serviços</a></li>
           <li><a href="barbeiros.html">Barbeiros</a></li>
           <li><a href="agendamento.html">Agendamento</a></li>
-          <li><a href="login.html" class="active">Login</a></li>
+          <li><a href="login.html" id="loginBtn">Login</a></li>
         </ul>
       </nav>
     </header>
 
-    <main class="container">
-      <h2>Login</h2>
-      <form id="loginForm">
+    <main>
+      <h1>Login</h1>
+      <form id="login-form" onsubmit="return false;">
         <label for="email">Email:</label>
         <input type="email" id="email" required />
 
         <label for="senha">Senha:</label>
-        <input type="password" id="senha" required minlength="8" />
+        <input type="password" id="senha" required />
 
-        <button type="submit" class="btn">Entrar</button>
-        <a href="cadastro.html">Registrar</a>
+        <button type="button" onclick="loginUsuario()">Entrar</button>
       </form>
+
+      <div class="login-links">
+        <a href="recuperar-senha.html">Esqueceu a senha?</a> |
+        <a href="registrar.html">Registrar</a>
+      </div>
     </main>
 
     <footer>
       <p>© 2025 Barbershop Juan - Todos os direitos reservados</p>
+
+      <div class="social-footer">
+        <a
+          href="https://www.instagram.com/jr__cortes_?igsh=MXR1aHJkenk0NXlkdw=="
+          target="_blank"
+        >
+          <i class="fab fa-instagram"></i> @jr__cortes_
+        </a>
+        <a href="https://wa.me/5511977473530" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-      document
-        .getElementById("loginForm")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const email = document.getElementById("email").value;
-          const senha = document.getElementById("senha").value;
-          try {
-            const res = await fetch("http://localhost:8080/auth/login", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ email, senha }),
-            });
-            if (!res.ok) throw new Error("Erro no login");
-            const data = await res.json();
-            localStorage.setItem("token", data.token);
-            alert("Login realizado!");
-            window.location.href = "agendamento.html";
-          } catch (err) {
-            alert(err.message);
-          }
-        });
-    </script>
   </body>
 </html>
