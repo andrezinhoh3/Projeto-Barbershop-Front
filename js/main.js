@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080";
+const API_URL = "barbersho-juan.us-east-2.elasticbeanstalk.com";
 
 // ==================== LOGIN ====================
 async function loginUsuario() {
